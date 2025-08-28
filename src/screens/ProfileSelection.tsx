@@ -24,13 +24,22 @@ export function ProfileSelection() {
 
         {/* Role Selection Cards */}
         <div className="space-y-4">
-          <Card 
-            className="rounded-2xl border-2 hover:border-primary cursor-pointer transition-colors"
+          <Card
+            role="button"
+            tabIndex={0}
+            aria-label="Selecionar prestador de serviços"
+            className="rounded-2xl border-2 hover:border-primary cursor-pointer transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
             onClick={() => handleRoleSelection('provider')}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                handleRoleSelection('provider');
+              }
+            }}
           >
             <CardContent className="p-6">
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center">
+                <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center" aria-hidden="true">
                   <Briefcase className="w-6 h-6 text-blue-600" />
                 </div>
                 <div className="flex-1">
@@ -41,13 +50,22 @@ export function ProfileSelection() {
             </CardContent>
           </Card>
 
-          <Card 
-            className="rounded-2xl border-2 hover:border-primary cursor-pointer transition-colors"
+          <Card
+            role="button"
+            tabIndex={0}
+            aria-label="Selecionar contratante"
+            className="rounded-2xl border-2 hover:border-primary cursor-pointer transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
             onClick={() => handleRoleSelection('contractor')}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                handleRoleSelection('contractor');
+              }
+            }}
           >
             <CardContent className="p-6">
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center">
+                <div className="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center" aria-hidden="true">
                   <UserCheck className="w-6 h-6 text-green-600" />
                 </div>
                 <div className="flex-1">
@@ -59,7 +77,7 @@ export function ProfileSelection() {
           </Card>
         </div>
 
-        <Button 
+        <Button
           className="w-full h-12 rounded-xl"
           onClick={() => handleRoleSelection('provider')}
         >
